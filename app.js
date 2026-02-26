@@ -2,6 +2,7 @@
    THEME TOGGLE (Core #1 + Bonus localStorage)
 ========================================================== */
 const themeBtn = document.getElementById("themeBtn");
+const expandedCountEl = document.getElementById("expandedCount");
 
 function isDarkMode() {
   return document.body.classList.contains("dark");
@@ -30,9 +31,10 @@ themeBtn.addEventListener("click", () => {
   saveThemePreference();
 });
 
-/* ==========================================================
-   EXPANDED COUNTER (Core #3)
-========================================================== */
+function updateExpandedCount() {
+  const count = document.querySelectorAll(".card.expanded").length;
+  expandedCountEl.textContent = count;
+}
 
 /* ==========================================================
    CARD EXPAND/COLLAPSE 
