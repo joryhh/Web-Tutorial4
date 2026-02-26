@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Interactive DevBoard</title>
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<nav class="sidebar">
+<div class="logo">DevBoard</div>
+<ul class="nav-links">
+<li class="active"><a href="./index.html">Home</a></li>
+<li><a href="./analytics.html">Analytics</a></li>
+<li><a href="./settings.html">Settings</a></li>
+</ul>
+<div class="sidebar-bottom">
+<div class="counter">
+Expanded: <span id="expandedCount">0</span>
+</div>
+<button id="themeBtn" class="btn" type="button">Dark Mode</button>
+</div>
+</nav>
+<main class="grid-container" id="grid">
+<section class="card" tabindex="0">
+<h3>Revenue</h3>
+<p class="value">$12k</p>
+<p class="details">Monthly revenue is up 8% compared to last month.</p>
+</section>
+<section class="card" tabindex="0">
+<h3>Users</h3>
+<p class="value">1,200</p>
+<p class="details">New signups increased after the latest feature update.</p>
+</section>
+<section class="card" tabindex="0">
+<h3>Active Sessions</h3>
+<p class="value">312</p>
+<p class="details">Peak traffic is typically between 6–9 PM.</p>
+</section>
+<section class="card wide" tabindex="0">
+<h3>Server Logs</h3>
+<p class="value">OK</p>
+<p class="details">No critical errors in the last 24 hours.</p>
+</section>
+<section class="card" tabindex="0">
+<h3>Storage</h3>
+<p class="value">68%</p>
+<p class="details">Consider cleaning old backups this week.</p>
+</section>
+</main>
+<script src="app.js"></script>
+</body>
+</html>
