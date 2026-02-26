@@ -1,0 +1,324 @@
+/* style.css  â€” SWE 381 - Rawan Alabdulrahman
+   Task:
+   - Update this file to meet the CSS requirements listed in the instructions.
+   - Only fill in the TODO blocks (you may adjust values if needed).
+*/
+
+/* =========================
+   Reset / Base (Provided)
+========================= */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+/* ==========================================================
+   CORE CSS #1 â€” Theme with CSS Variables
+   Requirements:
+   - Define UI colors as CSS variables in :root:
+     (bg, text, card/surface, accent, shadow)
+   - When body.dark is active, override variables
+   - Use variables across body, sidebar, cards, button
+========================================================== */
+:root {
+  /* TODO (Core): define light theme variables */
+  --bg: #f4f6fb;
+  --text: #111827;
+  --surface: #ffffff;
+  --nav: #f4f6fb;
+  --nav-text: #222021;
+  --accent: #D9DDDC;
+  --shadow: 0 6px 14px rgba(0,0,0,0.12);
+  --shadow-strong: 0 10px 20px rgba(0,0,0,0.20);
+}
+
+
+body.dark {
+  /* TODO (Core): override variables for dark theme */
+  --bg: #1f2937;
+  --text: #f9fafb;
+  --surface: #374151;
+  --nav: #111827;
+  --nav-text: #f9fafb;
+  --accent: #3b82f6;
+  --shadow: 0 6px 14px rgba(0,0,0,0.50);
+  --shadow-strong: 0 10px 20px rgba(0,0,0,0.70);
+}
+
+/* Provided layout variables */
+:root {
+  --sidebar-width: 220px;
+  --radius: 12px;
+}
+
+body{
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+
+  /* TODO (Core): use variables */
+  background: var(--bg);
+  color: var(--text);
+}
+/* =========================
+   Fixed Left Sidebar (Provided)
+========================= */
+.sidebar{
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: var(--sidebar-width);
+  z-index: 1000;
+
+  display: flex;
+  flex-direction: column;
+
+  padding: 18px 16px;
+
+  /* TODO (Core): use variables */
+  background: var(--nav);
+  color: var(--nav-text);
+
+  box-shadow: 6px 0 18px rgba(0,0,0,0.15);
+}
+
+.logo{
+  font-weight: 800;
+  letter-spacing: 0.3px;
+  margin-bottom: 18px;
+}
+
+.nav-links{
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  opacity: 0.95;
+}
+
+.nav-links li{
+  padding: 10px 12px;
+  border-radius: 10px;
+  cursor: pointer;
+  user-select: none;
+  transition: background 160ms ease, transform 160ms ease;
+}
+
+.nav-links li:hover{
+  background: rgba(255,255,255,0.08);
+}
+
+/* Optional selected state (provided) */
+.nav-links li.active{
+  background: transparent;
+  box-shadow: inset 0 0 0 2px rgba(255,255,255,0.18);
+  position: relative;
+  padding-left: 16px;
+}
+
+.nav-links li.active::before{
+  content: "";
+  position: absolute;
+  left: 6px;
+  top: 8px;
+  bottom: 8px;
+  width: 4px;
+  border-radius: 999px;
+
+  /* TODO (Core): use accent variable */
+   background: var(--accent); 
+}
+
+.sidebar-bottom{
+  margin-top: auto;
+  display: grid;
+  gap: 10px;
+}
+
+.counter{
+  font-size: 14px;
+  opacity: 0.9;
+}
+
+/* Button */
+.btn{
+  border: 0;
+  padding: 10px 12px;
+  border-radius: 10px;
+
+  /* TODO (Core): use variables */
+  background: var(--accent); 
+  color: #fff;
+
+  cursor: pointer;
+
+  /* Motion is handled in Reduced Motion section */
+  transition: transform 160ms ease, filter 160ms ease, box-shadow 160ms ease;
+}
+
+.btn:hover{
+  filter: brightness(1.06);
+  box-shadow: 0 8px 18px rgba(0,0,0,0.18);
+}
+
+.btn:active{
+  transform: translateY(1px);
+}
+
+/* =========================
+   Main Grid (Provided)
+========================= */
+.grid-container{
+  padding: 24px;
+  margin-left: var(--sidebar-width);
+
+  display: grid;
+  gap: 18px;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+}
+
+/* =========================
+   Cards (Provided)
+========================= */
+.card{
+  /* TODO (Core): use variables */
+  /* background: var(--surface); */
+  /* color: var(--text); */
+  background: var(--surface);
+  color: var(--text);
+
+  border-radius: var(--radius);
+  padding: 18px;
+
+  /* TODO (Core): use shadow variable */
+  /* box-shadow: var(--shadow); */
+ box-shadow: var(--shadow);
+
+  outline: none;
+
+  /* Hover motion must be disabled in Reduced Motion */
+  transition: transform 180ms ease, box-shadow 180ms ease;
+}
+
+.card:hover{
+  transform: translateY(-10px);
+
+  /* TODO (Core): use strong shadow variable */
+  /* box-shadow: var(--shadow-strong); */
+  box-shadow: var(--shadow-strong);
+  cursor: pointer;
+}
+
+.value{
+  font-size: 22px;
+  font-weight: 800;
+  margin-top: 8px;
+}
+
+/* ==========================================================
+   BONUS #2 â€” Smooth Details Reveal (CSS)
+   Requirements:
+   - Hide .details by default using max-height + opacity (NOT display: none)
+   - Show when .card.expanded is active
+   - Must respect Reduced Motion (no animation when reduced)
+========================================================== */
+.details{
+  margin-top: 10px;
+  opacity: 0.9;
+
+  /* TODO (Bonus): smooth-hide (max-height, overflow, opacity) */
+  /* TODO (Bonus): transition for max-height + opacity */
+}
+
+.card.expanded .details{
+  /* TODO (Bonus): smooth-show (max-height + opacity) */
+}
+
+/* Optional expanded styling (provided) */
+.card.expanded{
+  /* TODO (Optional): subtle â€œselectedâ€ styling using accent/shadow if desired */
+  /* Example:
+     box-shadow: var(--shadow-strong);
+     border-left: 6px solid var(--accent);
+     padding-left: 12px;
+  */
+}
+
+/* ==========================================================
+   CORE CSS #2 â€” Keyboard Focus Visibility
+   Requirements:
+   - Add a clear :focus-visible for .btn and .card
+   - Use outline with accent color + outline-offset
+========================================================== */
+.card:focus-visible{
+  /* TODO (Core): visible focus ring */
+  /* outline: 3px solid var(--accent); */
+  /* outline-offset: 3px; */
+  outline: 3px solid var(--accent);
+  outline-offset: 4px;
+}
+
+.btn:focus-visible{
+  /* TODO (Core): visible focus ring */
+  /* outline: 3px solid var(--accent); */
+  /* outline-offset: 3px; */
+  outline: 3px solid var(--accent);
+  outline-offset: 4px;
+}
+
+/* ==========================================================
+   CORE CSS #3 â€” Reduced Motion Support
+   Requirements:
+   - If prefers-reduced-motion: reduce, disable/reduce transitions
+   - Hover/focus can still change color/shadow, but avoid movement
+========================================================== */
+@media (prefers-reduced-motion: reduce){
+  .card,
+  .btn,
+  .details{
+    /* TODO (Core): reduce or remove transitions */
+    /* transition: none; */
+    transition: none;
+
+  }
+
+  .card:hover{
+    /* TODO (Core): avoid movement */
+    /* transform: none; */
+    transition: none;
+
+  }
+
+  .btn:active{
+    /* Optional: avoid movement on press */
+    /* transform: none; */
+     transition: none;
+
+  }
+}
+
+/* Responsive helper (provided) */
+@media (max-width: 640px){
+  .sidebar{
+    height: auto;
+    width: 100%;
+    flex-direction: row;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .nav-links{
+    flex-direction: row;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+
+  .sidebar-bottom{
+    margin-top: 0;
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .grid-container{
+    margin-left: 0;
+    padding-top: 90px;
+  }
+}
