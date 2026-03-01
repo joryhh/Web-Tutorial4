@@ -37,14 +37,17 @@ function updateExpandedCount() {
 }
 
 /* ==========================================================
-   CARD EXPAND/COLLAPSE 
+   CARD EXPAND/COLLAPSE
 ========================================================== */
 const cards = document.querySelectorAll(".card");
 
 function toggleCard(card) {
   card.classList.toggle("expanded");
   const isExpanded = card.classList.contains("expanded");
-  card.setAttribute("aria-expanded", isExpanded);
+  
+  // Toggling the ARIA state (aria-expanded)
+  card.setAttribute("aria-expanded", isExpanded); // Added line
+  
   updateExpandedCount();
 }
 
@@ -65,4 +68,4 @@ cards.forEach((card) => {
 
 restoreThemePreference();
 setThemeButtonLabel();
-updateExpandedCount();
+updateExpandedCount()
